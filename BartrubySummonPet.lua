@@ -661,7 +661,8 @@ function BartrubySummonPet:CheckQuests()
 	end
 	
 	for i, v in ipairs(ExcludedItems) do
-		if GetItemCount(v) > 0 then
+		local count = C_Item and C_Item.GetItemCount and C_Item.GetItemCount(v) or (GetItemCount and GetItemCount(v) or 0)
+		if count > 0 then
 			return true
 		end
 	end
